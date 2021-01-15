@@ -96,14 +96,14 @@ DATABASES = {
     #     'HOST': 'g8mh6ge01lu2z3n1.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
     #     'PORT': '3306'
     # },
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'bdchuclei',
-        'USER': 'postgres',
-        'PASSWORD': '123456',
-        'HOST': 'localhost',
-        'PORT': 5432,
-    },
+    # 'default': {
+    #    'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    #    'NAME': 'bdchuclei',
+    #    'USER': 'postgres',
+    #    'PASSWORD': '123456',
+    #    'HOST': 'localhost',
+    #    'PORT': 5432,
+    # },
     # 'default': {
     #    'ENGINE': 'django.db.backends.postgresql_psycopg2',
     #    'NAME': 'd2lseebnv0ece3',
@@ -112,7 +112,7 @@ DATABASES = {
     #    'HOST': 'ec2-184-72-235-80.compute-1.amazonaws.com',
     #    'PORT': 5432
     # },
-    'postgres': {
+    'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'bdchuclei',
         'USER': 'postgres',
@@ -159,4 +159,3 @@ STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 
 AUTH_USER_MODEL = 'core.User'
-
