@@ -1,16 +1,7 @@
-
 from pathlib import Path
-
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
-# BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-# STATIC_ROOT = os.path.normpath(os.path.join(BASE_DIR, 'staticfiles'))
-# STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'cw@^l5dxd&rz*!3*g56)4qfzeb0)t=k0=cnueqd+78rreqx)ru'
@@ -37,17 +28,17 @@ INSTALLED_APPS = [
 
 # NOTA : es una buena idea deshabilitar la API navegable en producción
 # con esta configuración:
-REST_FRAMEWORK = {
-    'DEFAULT_RENDERER_CLASSES': (
-        'rest_framework.renderers.JSONRenderer',
-    ),
-    'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.IsAuthenticated',
-    ),
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework.authentication.TokenAuthentication',
-    ),
-}
+# REST_FRAMEWORK = {
+#    'DEFAULT_RENDERER_CLASSES': (
+#        'rest_framework.renderers.JSONRenderer',
+#    ),
+#    'DEFAULT_PERMISSION_CLASSES': (
+#        'rest_framework.permissions.IsAuthenticated',
+#    ),
+#    'DEFAULT_AUTHENTICATION_CLASSES': (
+#        'rest_framework.authentication.TokenAuthentication',
+#    ),
+# }
 
 CORS_ORIGIN_WHITELIST = [
     'http://localhost:3000',  # Este es el que utiliza React
@@ -103,14 +94,14 @@ DATABASES = {
     #     'HOST': 'g8mh6ge01lu2z3n1.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
     #     'PORT': '3306'
     # },
-    # 'default': {
-    #    'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    #    'NAME': 'bdchuclei',
-    #    'USER': 'postgres',
-    #    'PASSWORD': '123456',
-    #    'HOST': 'localhost',
-    #    'PORT': 5432,
-    # },
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'bdchuclei',
+        'USER': 'postgres',
+        'PASSWORD': '123456',
+        'HOST': 'localhost',
+        'PORT': 5432,
+    },
     # 'default': {
     #    'ENGINE': 'django.db.backends.postgresql_psycopg2',
     #    'NAME': 'd2lseebnv0ece3',
@@ -119,7 +110,7 @@ DATABASES = {
     #    'HOST': 'ec2-184-72-235-80.compute-1.amazonaws.com',
     #    'PORT': 5432
     # },
-    'default': {
+    'postgres': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'bdchuclei',
         'USER': 'postgres',
