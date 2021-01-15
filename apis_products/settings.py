@@ -57,9 +57,10 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-CORS_ORIGIN_ALLOW_ALL = True  # If this is used then `CORS_ORIGIN_WHITELIST` will not have any effect
 
-CORS_ALLOW_CREDENTIALS = True
+# CORS_ORIGIN_ALLOW_ALL = True  # If this is used then `CORS_ORIGIN_WHITELIST` will not have any effect
+
+# CORS_ALLOW_CREDENTIALS = True
 
 ROOT_URLCONF = 'apis_products.urls'
 
@@ -157,7 +158,5 @@ USE_TZ = True
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 
-# https://shopcodigo.herokuapp.com/
 AUTH_USER_MODEL = 'core.User'
 
-# django_heroku.settings(locals())
