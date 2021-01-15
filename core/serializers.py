@@ -139,10 +139,11 @@ class PhotosBaseSerializer(serializers.ModelSerializer):
 
 class PhotosSerializer(serializers.ModelSerializer):
     original = serializers.CharField(source='url')
+    thumbnail = serializers.CharField(source='url')
 
     class Meta:
         model = Photos
-        fields = ['pk', 'name', 'product', 'original']
+        fields = ['pk', 'name', 'product', 'original', 'thumbnail']
 
 
 class ProductSerializer(serializers.ModelSerializer):
