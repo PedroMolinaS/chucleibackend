@@ -43,7 +43,8 @@ INSTALLED_APPS = [
 CORS_ORIGIN_WHITELIST = [
     'http://localhost:3000',  # Este es el que utiliza React
     'http://127.0.0.1:8000',
-    'https://chucleibackend.herokuapp.com'
+    'https://chucleibackend.herokuapp.com',
+    'https://www.chuclei.com'
 ]
 
 MIDDLEWARE = [
