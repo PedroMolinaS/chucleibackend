@@ -20,7 +20,7 @@ from .models import CategoryMain, Category, Product, Order, Order_Detail, Store,
 class UserModelSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['email', 'password', 'username', 'pk']
+        fields = ['email', 'password', 'username', 'pk', 'is_staff']
         # fields = ['username', 'first_name', 'last_name', 'email']
 
 
