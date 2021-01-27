@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.utils.html import format_html
 
 from .models import Category, Product, Order, Order_Detail, CategoryMain, Store, Almacen, Deliveryman, Person, \
-    User, Photos
+    User, Photos, Zonapais
 
 
 # @admin.register(User)
@@ -93,4 +93,4 @@ admin.site.register(Deliveryman, DeliveryManAdmin)
 
 admin.site.register(User, UserAdmin)
 
-admin.site.register([Order, Order_Detail, Person, Photos])
+admin.site.register([Order, Order_Detail, Person, Photos, Zonapais])

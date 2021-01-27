@@ -1,6 +1,8 @@
 from django.conf import settings
 from django.contrib.auth.models import UserManager, AbstractUser, Group
 from django.db import models
+
+
 # from rest_framework.authtoken.models import Token
 
 
@@ -219,10 +221,26 @@ class Deliveryman(models.Model):
         return self.name
 
 
+class Zonapais(models.Model):
+    departamento = models.CharField(max_length=50, blank=True, null=True)
+    provincia = models.CharField(max_length=50, blank=True, null=True)
+    distrito = models.CharField(max_length=50, blank=True, null=True)
+
+
+    class Meta:
+        db_table = 'zonapais'
+        verbose_name_plural = 'Zonapais'
+        ordering = ['departamento', 'provincia', 'distrito']
+
+    def __str__(self):
+        return self.departamento
+
+
 class Order(models.Model):
     dateorder = models.DateField()
     state = models.CharField(max_length=20, default='pendiente')
     address = models.CharField(max_length=255)
+    reference = models.CharField(max_length=255, null=True, blank=True)
     delivery = models.BooleanField(default=False)
     delivery_cost = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
     total_cost = models.DecimalField(max_digits=20, decimal_places=2, default=0.00)
@@ -233,6 +251,8 @@ class Order(models.Model):
     # customer = models.ForeignKey(Customer, on_delete=models.CASCADE, related_name='order')
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='orderuser')
     deliveryman = models.ForeignKey(Deliveryman, on_delete=models.CASCADE, related_name='orderdeliveryman')
+    zonapais = models.ForeignKey(Zonapais, on_delete=models.CASCADE, related_name='orderzonapais')
+
 
     # store = models.ForeignKey(Store, on_delete=models.CASCADE, related_name='orderstore')
 
