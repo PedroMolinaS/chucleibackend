@@ -10,11 +10,10 @@ from rest_framework.validators import UniqueValidator
 
 # Models
 from .models import CategoryMain, Category, Product, Order, Order_Detail, Store, \
-    Almacen, Deliveryman, Person, User, Photos
+    Almacen, Deliveryman, Person, User, Photos, Zonapais
 
 
 #################################################
-
 
 # Datos para el Login:
 class UserModelSerializer(serializers.ModelSerializer):
@@ -144,6 +143,12 @@ class PhotosSerializer(serializers.ModelSerializer):
     class Meta:
         model = Photos
         fields = ['pk', 'name', 'product', 'original', 'thumbnail']
+
+
+class ZonapaisSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Zonapais
+        fields = '__all__'
 
 
 class ProductSerializer(serializers.ModelSerializer):

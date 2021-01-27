@@ -18,10 +18,11 @@ from .serializers import ProductSerializer, OrderOrderDetailSerializer, \
     CategoryProductSerializer, MainCategoryCategoryProductSerializer, UserLoginSerializer, UserModelSerializer, \
     UserSignUpSerializer, OrderDetailBasicoSerializer, OrderSerializer, OrderDetailSerializer, \
     EmptySerializer, OrderDetailGraficosSerializer, OrderOrderDetailBaseSerializer, StoreProductosSerializer, \
-    DetailOrderSerializer, PhotosSerializer, CategorySerializer, StoreSerializer, ProductBaseSerializer, PhotosBaseSerializer
+    DetailOrderSerializer, PhotosSerializer, CategorySerializer, StoreSerializer, ProductBaseSerializer, \
+    PhotosBaseSerializer, ZonapaisSerializer
 
 # Models
-from .models import Category, Product, Order, Order_Detail, CategoryMain, Store, Deliveryman, User, Photos
+from .models import Category, Product, Order, Order_Detail, CategoryMain, Store, Deliveryman, User, Photos, Zonapais
 
 from django.http import FileResponse, Http404, HttpResponse
 from django.shortcuts import render
@@ -124,8 +125,6 @@ class StoreAllViewset(generics.ListAPIView):
 #     serializer_class = CategorySerializer
 
 
-
-
 class ProductsAllViewset(generics.ListAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
@@ -199,6 +198,12 @@ class CategoryProductViewset(generics.ListAPIView):
 class MainCategoryCategoryProductViewset(generics.ListAPIView):
     queryset = CategoryMain.objects.all()
     serializer_class = MainCategoryCategoryProductSerializer
+    permission_classes = (AllowAny,)
+
+
+class ZonapaisViewset(generics.ListAPIView):
+    queryset = Zonapais.objects.all()
+    serializer_class = ZonapaisSerializer
     permission_classes = (AllowAny,)
 
 
