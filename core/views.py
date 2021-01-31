@@ -379,6 +379,7 @@ class OrderMultipleOrderDetailViewset(viewsets.ModelViewSet):
             new_orderdetail = Order_Detail.objects.create(
                 order=new_order,
                 product=Product.objects.get(pk=detalle_obj['product']),
+                image_product=detalle_obj['image_product'],
                 store=Store.objects.get(pk=detalle_obj['store']),
                 quantity=detalle_obj['quantity'],
                 discount=detalle_obj['discount'])
