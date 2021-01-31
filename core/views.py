@@ -356,7 +356,9 @@ class OrderMultipleOrderDetailViewset(viewsets.ModelViewSet):
 
         new_order = Order.objects.create(
             dateorder=order_data['dateorder'],
-            state=order_data['state'], address=order_data['address'],
+            state=order_data['state'],
+            address=order_data['address'],
+            reference=order_data['reference'],
             delivery=order_data['delivery'],
             delivery_cost=order_data['delivery_cost'],
             total_cost=order_data['total_cost'],
@@ -364,7 +366,8 @@ class OrderMultipleOrderDetailViewset(viewsets.ModelViewSet):
             order_lon=order_data['order_lon'],
             datedelivery=order_data['datedelivery'],
             user=User.objects.get(pk=order_data['user']),
-            deliveryman=Deliveryman.objects.get(pk=order_data['deliveryman'])
+            deliveryman=Deliveryman.objects.get(pk=order_data['deliveryman']),
+            zonapais=Zonapais.objects.get(pk=order_data['zonapais'])
         )
         new_order.save()
 

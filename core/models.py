@@ -272,6 +272,7 @@ class Order_Detail(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, blank=True, null=True,
                                 related_name='orderdetailproduct')
     quantity = models.IntegerField()
+    image_product = models.CharField(max_length=255, null=True, blank=True)
     discount = models.DecimalField(max_digits=5, decimal_places=2)
     store = models.ForeignKey(Store, blank=True, null=True, on_delete=models.CASCADE, related_name='orderdetailstore')
 
