@@ -58,12 +58,12 @@ class Pagination(PageNumberPagination):
 
     def get_paginated_response(self, data):
         return Response({
-            #'links': {
+            # 'links': {
             #    'next': self.get_next_link(),
             #    'previous': self.get_previous_link()
-            #},
-            #'total_pages': self.page.paginator.num_pages,
-            #'count': self.page.paginator.count,
+            # },
+            # 'total_pages': self.page.paginator.num_pages,
+            # 'count': self.page.paginator.count,
             'results': data
         })
 
@@ -208,6 +208,7 @@ def productSearch(request, name):
 
 class CategoryProductViewset(generics.ListAPIView):
     queryset = Category.objects.all()
+    #queryset = Category.objects.only('pk', 'name')
     serializer_class = CategoryProductSerializer
     permission_classes = (AllowAny,)
 
@@ -215,8 +216,8 @@ class CategoryProductViewset(generics.ListAPIView):
 class MainCategoryCategoryProductViewset(generics.ListAPIView):
     queryset = CategoryMain.objects.all()
     serializer_class = MainCategoryCategoryProductSerializer
-    #paginate_by = 2
-    #pagination_class = Pagination
+    # paginate_by = 2
+    # pagination_class = Pagination
     permission_classes = (AllowAny,)
 
 

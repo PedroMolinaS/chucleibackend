@@ -160,8 +160,8 @@ class ProductSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Product
-        fields = ['pk', 'name', 'slug', 'image', 'price', 'original_price', 'description', 'stock', 'is_active',
-                  'recomendations', 'offer', 'store', 'store_name', 'store_hour_sem', 'store_hour_fsem',
+        fields = ['pk', 'name', 'image', 'price', 'description', 'stock', 'is_active',
+                  'offer', 'store', 'store_name', 'store_hour_sem', 'store_hour_fsem',
                   'store_address', 'photosproduct']
 
 
@@ -241,7 +241,7 @@ class CategoryProductSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Category
-        fields = ['pk', 'name', 'slug', 'description', 'is_active', 'image', 'product']
+        fields = ['pk', 'name', 'product']
 
 
 class MainCategoryCategoryProductSerializer(serializers.ModelSerializer):
@@ -249,7 +249,7 @@ class MainCategoryCategoryProductSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = CategoryMain
-        fields = ['pk', 'name', 'slug', 'image', 'category']
+        fields = ['pk', 'name', 'image', 'category']
 
 
 class StoreProductosSerializer(serializers.ModelSerializer):
