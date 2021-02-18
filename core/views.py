@@ -8,6 +8,7 @@ from rest_framework.decorators import action, api_view
 from rest_framework.authtoken.models import Token
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from rest_framework.pagination import PageNumberPagination
 from django.db.models import Avg, Max, Min, Sum, Count, Q
 from django.forms.models import model_to_dict
 
@@ -50,6 +51,21 @@ from . import serializers
 def index(request):
     template_name = 'index.html'
     return render(request, template_name)
+
+
+class Pagination(PageNumberPagination):
+    page_size = 10
+
+    def get_paginated_response(self, data):
+        return Response({
+            #'links': {
+            #    'next': self.get_next_link(),
+            #    'previous': self.get_previous_link()
+            #},
+            #'total_pages': self.page.paginator.num_pages,
+            #'count': self.page.paginator.count,
+            'results': data
+        })
 
 
 ############################
@@ -128,6 +144,7 @@ class StoreAllViewset(generics.ListAPIView):
 class ProductsAllViewset(generics.ListAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
+    pagination_class = Pagination
     permission_classes = (AllowAny,)
 
 
@@ -198,6 +215,8 @@ class CategoryProductViewset(generics.ListAPIView):
 class MainCategoryCategoryProductViewset(generics.ListAPIView):
     queryset = CategoryMain.objects.all()
     serializer_class = MainCategoryCategoryProductSerializer
+    #paginate_by = 2
+    #pagination_class = Pagination
     permission_classes = (AllowAny,)
 
 
