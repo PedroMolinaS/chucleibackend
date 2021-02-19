@@ -165,6 +165,12 @@ class ProductSerializer(serializers.ModelSerializer):
                   'store_address', 'photosproduct']
 
 
+class ProductSerializerV2(serializers.ModelSerializer):
+    class Meta:
+        model = Product
+        fields = ['pk']
+
+
 class OrderSerializer(serializers.ModelSerializer):
     class Meta:
         model = Order
@@ -244,8 +250,30 @@ class CategoryProductSerializer(serializers.ModelSerializer):
         fields = ['pk', 'name', 'product']
 
 
+class CategoryProductSerializerV2(serializers.ModelSerializer):
+    class Meta:
+        model = Category
+        fields = ['pk', 'name']
+
+
+class CategoryProductSerializerV3(serializers.ModelSerializer):
+    product = ProductSerializerV2(many=True, read_only=True)
+
+    class Meta:
+        model = Category
+        fields = ['pk', 'name', 'product']
+
+
 class MainCategoryCategoryProductSerializer(serializers.ModelSerializer):
     category = CategoryProductSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = CategoryMain
+        fields = ['pk', 'name', 'image', 'category']
+
+
+class MainCategoryCategoryProductSerializerV2(serializers.ModelSerializer):
+    category = CategoryProductSerializerV2(many=True, read_only=True)
 
     class Meta:
         model = CategoryMain

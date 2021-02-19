@@ -20,7 +20,7 @@ from .serializers import ProductSerializer, OrderOrderDetailSerializer, \
     UserSignUpSerializer, OrderDetailBasicoSerializer, OrderSerializer, OrderDetailSerializer, \
     EmptySerializer, OrderDetailGraficosSerializer, OrderOrderDetailBaseSerializer, StoreProductosSerializer, \
     DetailOrderSerializer, PhotosSerializer, CategorySerializer, StoreSerializer, ProductBaseSerializer, \
-    PhotosBaseSerializer, ZonapaisSerializer
+    PhotosBaseSerializer, ZonapaisSerializer, MainCategoryCategoryProductSerializerV2, CategoryProductSerializerV3
 
 # Models
 from .models import Category, Product, Order, Order_Detail, CategoryMain, Store, Deliveryman, User, Photos, Zonapais
@@ -208,14 +208,29 @@ def productSearch(request, name):
 
 class CategoryProductViewset(generics.ListAPIView):
     queryset = Category.objects.all()
-    #queryset = Category.objects.only('pk', 'name')
+    # queryset = Category.objects.only('pk', 'name')
     serializer_class = CategoryProductSerializer
+    permission_classes = (AllowAny,)
+
+
+class CategoryProductViewsetV2(generics.ListAPIView):
+    queryset = Category.objects.all()
+    # queryset = Category.objects.only('pk', 'name')
+    serializer_class = CategoryProductSerializerV3
     permission_classes = (AllowAny,)
 
 
 class MainCategoryCategoryProductViewset(generics.ListAPIView):
     queryset = CategoryMain.objects.all()
     serializer_class = MainCategoryCategoryProductSerializer
+    # paginate_by = 2
+    # pagination_class = Pagination
+    permission_classes = (AllowAny,)
+
+
+class MainCategoryCategoryProductViewsetV2(generics.ListAPIView):
+    queryset = CategoryMain.objects.all()
+    serializer_class = MainCategoryCategoryProductSerializerV2
     # paginate_by = 2
     # pagination_class = Pagination
     permission_classes = (AllowAny,)

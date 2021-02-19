@@ -33,7 +33,9 @@ urlpatterns = [
 
     # SERVICIOS CREADOS YA UTILIZADOS EN EL FRONT::::::
     path('List_Category_Products/', views.CategoryProductViewset.as_view()),
+    path('List_Category_Products/v2/', views.CategoryProductViewsetV2.as_view()),
     path('List_MainCategoryCategory_Products/', views.MainCategoryCategoryProductViewset.as_view()),
+    path('List_MainCategoryCategory_Products/v2/', views.MainCategoryCategoryProductViewsetV2.as_view()),
     path('List_All_Products/', views.ProductsAllViewset.as_view()),
     path('List_All_Categories/', views.CategoryAllViewset.as_view()),
     path('List_All_Store/', views.StoreAllViewset.as_view()),
