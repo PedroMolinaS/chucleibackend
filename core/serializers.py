@@ -152,6 +152,7 @@ class ZonapaisSerializer(serializers.ModelSerializer):
 
 
 class ProductSerializer(serializers.ModelSerializer):
+    category_pk = serializers.CharField(source='categories.pk')
     store_name = serializers.CharField(source='store.name')
     store_hour_sem = serializers.CharField(source='store.hour_sem')
     store_hour_fsem = serializers.CharField(source='store.hour_fsem')
@@ -161,7 +162,7 @@ class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
         fields = ['pk', 'name', 'image', 'price', 'description', 'stock', 'is_active',
-                  'offer', 'store', 'store_name', 'store_hour_sem', 'store_hour_fsem',
+                  'offer', 'category_pk', 'store', 'store_name', 'store_hour_sem', 'store_hour_fsem',
                   'store_address', 'photosproduct']
 
 
