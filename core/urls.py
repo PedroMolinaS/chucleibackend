@@ -41,6 +41,7 @@ urlpatterns = [
     path('List_All_Store/', views.StoreAllViewset.as_view()),
     path('List_All_Zonapais/', views.ZonapaisViewset.as_view()),
     path('List_Product_search/<name>/', views.productSearch, name='List_Product_search'),
+    path('List_Product_search_bycategory/<name>/', views.productSearchByCategory, name='List_Product_search_bycategory'),
     path('List_Order_OrderDetail/', views.OrderOrderDetailViewset.as_view()),
     path('Create_List_Product/', views.ProductCreateListViewset.as_view()),
     path('Create_List_Photos/', views.PhotosCreateListViewset.as_view()),

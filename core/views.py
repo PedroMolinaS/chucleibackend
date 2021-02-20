@@ -200,8 +200,15 @@ class OrderOrderDetailViewset(generics.ListAPIView):
 @api_view(['GET'])
 def productSearch(request, name):
     prod = Product.objects.filter(
-        Q(name__icontains=name) | Q(price__icontains=name) | Q(stock__icontains=name)
+        #Q(name__icontains=name) | Q(price__icontains=name) | Q(stock__icontains=name)
+        Q(name__icontains=name)
     )
+    serializer = ProductSerializer(prod, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def productSearchByCategory(request, name):
+    prod = Product.objects.filter(Q(categories=name))
     serializer = ProductSerializer(prod, many=True)
     return Response(serializer.data)
 
